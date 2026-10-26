@@ -32,11 +32,14 @@ if not SECRET_KEY:
     SECRET_KEY = 'development-only-key-change-before-deploy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-    if host.strip()
-]
+# ALLOWED_HOSTS = [
+#     host.strip()
+#     for host in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+#     if host.strip()
+# ]
+ALLOWED_HOSTS = ['*']
+# Allow your frontend to talk to your backend
+CORS_ALLOW_ALL_ORIGINS = True  # For easy initial deployment testing
 render_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if render_hostname:
     ALLOWED_HOSTS.append(render_hostname)
@@ -59,6 +62,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
