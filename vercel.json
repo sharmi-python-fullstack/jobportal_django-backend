@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "job_portal/wsgi.py": {
+      "maxDuration": 30
+    }
+  }
+}

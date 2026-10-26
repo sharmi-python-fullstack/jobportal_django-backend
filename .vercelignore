@@ -1,0 +1,8 @@
+.venv
+job-portal-frontend/node_modules
+job-portal-frontend/build
+db.sqlite3
+media
+staticfiles
+__pycache__
+*.py[cod]
